@@ -1,0 +1,39 @@
+﻿<Window x:Class="WPF1_ListBox3.AddPerson"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF1_ListBox3"
+        mc:Ignorable="d"
+        Title="AddPerson" Height="400" Width="500">
+    <Grid Margin="0, 30, 0, 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="246*" />
+            <ColumnDefinition Width="48*" />
+            <ColumnDefinition Width="199*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Label Content="Enter your last name: " />
+        <TextBox x:Name="LastName" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" />
+
+        <Label Content="Enter your first name: " Grid.Row="1" Grid.Column="0"/>
+        <TextBox x:Name="FirstName" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
+
+        <Label Content="Enter your salary: " Grid.Row="2" Grid.Column="0"/>
+        <TextBox x:Name="Salary" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" />
+
+        <Label Content="Enter your work experience (in years): " Grid.Row="3" Grid.Column="0"/>
+        <TextBox x:Name="WorkExperience" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" />
+
+        <Button x:Name="showAllButton" Content="Add and show all" Grid.Row="4" Grid.ColumnSpan="3"
+                Click="onShowAllButtonClick" />
+    </Grid>
+</Window>

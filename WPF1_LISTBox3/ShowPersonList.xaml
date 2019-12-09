@@ -1,0 +1,72 @@
+﻿<Window x:Class="WPF1_ListBox3.ShowPersonList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF1_ListBox3"
+        xmlns:task1ListBoxPerson="clr-namespace:task1ListBoxPerson;assembly=task1ListBoxPerson"
+        mc:Ignorable="d"
+        Title="SHOWPerson_List" Height="600" Width="400">
+    <Grid Margin="0, 30, 0, 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="350" />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <ListBox x:Name="lbMain" Margin="0, 0, 0, 20" Grid.ColumnSpan="3"
+                 SelectionChanged="onSelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="task1ListBoxPerson:PersonEntity">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Image Source="koala.jpg" Grid.RowSpan="4"></Image>
+                        <TextBlock Text="{Binding LastName}" Grid.Column="1"></TextBlock>
+                        <TextBlock Text="{Binding FirstName}" Grid.Column="1" Grid.Row="1"></TextBlock>
+                        <TextBlock Text="{Binding Salary}" Grid.Column="1" Grid.Row="2"></TextBlock>
+                        <TextBlock Text="{Binding WorkExperience}" Grid.Column="1" Grid.Row="3"></TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="AddButton" Content="Add" Width="100" Height="30"
+                Click="onAddButtonClick" Grid.Row="1" />
+        <Button x:Name="RemoveButton" Content="Remove" Width="100" Height="30"
+                Click="onRemoveButtonClick" Grid.Row="1" Grid.Column="1" IsEnabled="False" />
+        <Button x:Name="EditButton" Content="Edit" Width="100" Height="30"
+                Click="onEditButtonClick" Grid.Row="1" Grid.Column="2" IsEnabled="False" />
+        
+        <Button x:Name="ExitButton" Content="Exit" Width="100" Height="30"
+                Click="onExitButtonClick" Grid.Row="2" Grid.Column="1" />
+
+        <Label Content="Find: " Grid.Row="3" Grid.Column="0" HorizontalContentAlignment="Right"/>
+        <TextBox x:Name="SearchByText" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" TextChanged="SearchByText_TextChanged" />
+
+        <Label Content="Show with salary higher than: " Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+               HorizontalContentAlignment="Right" />
+        <TextBox x:Name="WorkExperience" Grid.Row="4" Grid.Column="2" TextChanged="WorkExperience_TextChanged" />
+
+        <Button x:Name="showJuniors" Content="Show juniors (less than 2 years)" Height="30"
+                Click="onShowJuniorsButtonClick" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" />
+    </Grid>
+</Window>
